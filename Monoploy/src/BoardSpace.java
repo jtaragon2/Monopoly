@@ -7,8 +7,12 @@ public class BoardSpace
 		public BoardSpace(String n,int l)
 		{
 			name = n;
-
 			location = l;
+		}
+		
+		public BoardSpace()
+		{
+
 		}
 		
 		public String getName()

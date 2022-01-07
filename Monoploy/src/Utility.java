@@ -1,11 +1,11 @@
 
-public class Utilities extends BoardSpace
+public class Utility extends BoardSpace
 	{
 		private int rent;
 		private int price;
 		private int numOfUtilities;
 		
-		public Utilities(String n, int l, int r, int p,  int u)
+		public Utility(String n, int l, int r, int p,  int u)
 		{
 			setName(n);
 			setLocation(l);

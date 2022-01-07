@@ -1,10 +1,10 @@
-public class Railroads extends BoardSpace
+public class Railroad extends BoardSpace
 	{
 		private int rent;
 		private int price;
 		private int numOfRoads;
 		
-		public Railroads(String n, int l, int r, int p,  int num)
+		public Railroad(String n, int l, int r, int p,  int num)
 		{
 			setName(n);
 			setLocation(l);
