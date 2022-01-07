@@ -1,4 +1,4 @@
-
+import java.util.*;
 public class Monopoly
 	{
 
@@ -6,6 +6,10 @@ public class Monopoly
 			{
 					System.out.println("Hello World");
 
+					Spaces.fillboard();
 			}
+		
+		
+		
 
 	}
