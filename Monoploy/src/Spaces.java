@@ -10,6 +10,6 @@ public class Spaces
 		public static void fillboard()
 			{			
 				board.add(new BoardSpace("Go", 1));
-				board.add(new Property("prop", 2, 24, 60, "Brown", 0));
+				board.add(new Property("prop", 2, 24, 60, "Brown", 0, 0));
 			}
 	}
