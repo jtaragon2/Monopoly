@@ -63,6 +63,5 @@ public class Spaces
 				board.add(new BoardSpace("Go To Jail", 2));
 				
 				
-				
 			}
 	}

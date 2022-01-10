@@ -4,33 +4,44 @@ public class Player
 	{
 		private int balance;
 		private int location;
-		ArrayList<Property> ownedProperties = new ArrayList<Property>();
-
+		ArrayList<Integer> ownedProperties = new ArrayList<Integer>();
+		
 		public Player()
 			{
 				balance = 1500;
 			}
 
-		public ArrayList<Property> getOwnedProperties()
+		public void buyProperty(int index, int price)
 			{
-				return ownedProperties;
+				if (price <= balance)
+					{
+						subtractFromBalance(price);
+					ownedProperties.add(index);
+					} else
+					{
+						System.out.println("You can't afford that");
+					}
+				
 			}
-
-		public void setOwnedProperties(ArrayList<Property> ownedProperties)
-			{
-				this.ownedProperties = ownedProperties;
-			}
+		public void buyHouse(int location) {
+			Spaces.board.get(location);
+			
+		}
 
 		public int getBalance()
 			{
 				return balance;
 			}
-		public void addToBalance(int b) {
-			balance += b;
-		}
-		public void subtractFromBalance(int b) {
-			balance -= b;
-		}
+
+		public void addToBalance(int b)
+			{
+				balance += b;
+			}
+
+		public void subtractFromBalance(int b)
+			{
+				balance -= b;
+			}
 
 		public int getLocation()
 			{
@@ -41,5 +52,5 @@ public class Player
 			{
 				this.location = location;
 			}
-		
+
 	}

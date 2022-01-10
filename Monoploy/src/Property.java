@@ -5,9 +5,9 @@ public class Property extends BoardSpace
 		private int price;
 		private String color;
 		private int numOfHouse;
-
+		private int housePrice;
 		
-		public Property(String n, int l, int r, int p, String c, int h)
+		public Property(String n, int l, int r, int p, String c, int h, int hp)
 		{
 			
 			setName(n);
@@ -16,6 +16,7 @@ public class Property extends BoardSpace
 			price = p;
 			color = c;
 			numOfHouse = h;
+			housePrice = hp;
 		}
 
 
@@ -60,10 +61,7 @@ public class Property extends BoardSpace
 				return numOfHouse;
 			}
 
-
-		public void setNumOfHouse(int numOfHouse)
-			{
-				this.numOfHouse = numOfHouse;
-			}
+		
+		
 		
 	}
