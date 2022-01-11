@@ -52,5 +52,7 @@ public class Player
 			{
 				this.location = location;
 			}
-
+		public void incrementLocation(int il) {
+			location += il;
+		}
 	}
