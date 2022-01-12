@@ -51,8 +51,14 @@ public class Player
 		public void setLocation(int location)
 			{
 				this.location = location;
+				if(location>40) {
+					location-=40;
+				}
 			}
 		public void incrementLocation(int il) {
 			location += il;
+			if(location>40) {
+				location-=40;
+			}
 		}
 	}
