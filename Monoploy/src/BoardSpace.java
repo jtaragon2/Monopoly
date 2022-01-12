@@ -3,7 +3,7 @@ public class BoardSpace
 	{
 		private String name;
 		private int location;
-		
+		protected boolean owned;
 		public BoardSpace(String n,int l)
 		{
 			name = n;
@@ -37,7 +37,15 @@ public class BoardSpace
 			{
 				this.location = location;
 			}
+		public boolean isOwned()
+			{
+				return owned;
+			}
 
+		public void setOwned(boolean owned)
+			{
+				this.owned = owned;
+			}
 
 
 	}
