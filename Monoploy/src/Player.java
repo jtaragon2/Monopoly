@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Player
 	{
 		private int balance;
-		private int location;
+		private int location = 1;
 		ArrayList<Integer> ownedProperties = new ArrayList<Integer>();
 		
 		public Player()
