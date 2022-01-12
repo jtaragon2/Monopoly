@@ -9,10 +9,10 @@ public class Monopoly
 		public static void main(String[] args)
 			{
 				Spaces.fillboard();
-				System.out.println("Welcome to Monopoly your staring balance is " + player1.getBalance() + "." );
+				System.out.println("Welcome to Monopoly your staring balance is " + player1.getBalance() + ".\nPress Enter to Role the dice!" );
 				pause();
 				
-				checkLocation();
+				
 			}
 		
 		
@@ -43,10 +43,16 @@ public class Monopoly
 						{
 							player1.addToBalance(200);
 							System.out.println("You are at GO");
+							break;
 						}
 				case 2:
 						{
 							System.out.println("You have landed at " + Spaces.board.get(1).getName() + "!");
+							break;
+						}
+				case 3:
+						{
+							System.out.println("You landed on a community chest!");
 							break;
 						}
 				case 4:
@@ -54,9 +60,20 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(3).getName() + "!");
 							break;
 						}
+				case 5:
+						{
+							System.out.println("Income Tax: Pay $100 to the bank!");
+							player1.subtractFromBalance(100);
+							break;
+						}
 				case 7:
 						{
 							System.out.println("You have landed at " + Spaces.board.get(6).getName() + "!");
+							break;
+						}
+				case 8:
+						{
+							System.out.println("You landed on a chance card!");
 							break;
 						}
 				case 9:
@@ -89,6 +106,11 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(16).getName() + "!");
 							break;
 						}
+				case 18:
+						{
+							System.out.println("You landed on a community chest!");
+							break;
+						}
 				case 19:
 						{
 							System.out.println("You have landed at " + Spaces.board.get(18).getName() + "!");
@@ -102,6 +124,11 @@ public class Monopoly
 				case 22:
 						{
 							System.out.println("You have landed at " + Spaces.board.get(21).getName() + "!");
+							break;
+						}
+				case 23:
+						{
+							System.out.println("You landed on a chance card!");
 							break;
 						}
 				case 24:
@@ -137,6 +164,11 @@ public class Monopoly
 				case 33:
 						{
 							System.out.println("You have landed at " + Spaces.board.get(32).getName() + "!");
+							break;
+						}
+				case 34:
+						{
+							System.out.println("You landed on a community chest!");
 							break;
 						}
 				case 35:
