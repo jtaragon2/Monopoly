@@ -10,22 +10,17 @@ public class Monopoly
 			{
 				Spaces.fillboard();
 				System.out.println("Welcome to Monopoly your staring balance is " + player1.getBalance() + ".\nPress Enter to Role the dice!" );
-				Chance.landChance();
+				
 				
 				boolean stillplaying = true;
-				
-				
-<<<<<<< HEAD
 
-				
-=======
 				while(stillplaying)
 					{
 						movePlayer();
 						checkLocation();
 						pause();
 					}
->>>>>>> branch 'master' of https://github.com/Max-Hatfield/Monopoly.git
+
 			}
 		
 		
