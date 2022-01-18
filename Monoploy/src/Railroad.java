@@ -1,26 +1,34 @@
 public class Railroad extends BoardSpace
 	{
-		private int rent;
+		private int oneRoadRent;
+		private int twoRoadRent;
+		private int threeRoadRent;
+		private int fourRoadRent;
+		private int mortgage;
 		private int price;
 		private int numOfRoads;
 		
-		public Railroad(String n, int l, int r, int p,  int num)
+		public Railroad(String n, int l, int r1,int r2, int r3, int r4, int m, int p)
 		{
 			setName(n);
 			setLocation(l);
-			rent = r;
+			oneRoadRent = r1;
+			twoRoadRent = r2;
+			threeRoadRent = r3;
+			fourRoadRent = r4;
+			mortgage = m;
 			price = p;
-			numOfRoads = num;
+			
 		}
 
 		public int getRent()
 			{
-				return rent;
+				return oneRoadRent;
 			}
 
 		public void setRent(int rent)
 			{
-				this.rent = rent;
+				this.oneRoadRent = rent;
 			}
 
 		public int getPrice()
@@ -33,14 +41,6 @@ public class Railroad extends BoardSpace
 				this.price = price;
 			}
 
-		public int getNumOfRoads()
-			{
-				return numOfRoads;
-			}
 
-		public void setNumOfRoads(int numOfRoads)
-			{
-				this.numOfRoads = numOfRoads;
-			}
 		
 	}

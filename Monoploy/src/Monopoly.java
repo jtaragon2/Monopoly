@@ -58,7 +58,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(1).getName() + "!");
 							if(Spaces.board.get(1).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardspace();
+									Spaces.board.get(player1.getLocation()).buyBoardSpace();
 								}
 							
 							else

@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 public class BoardSpace
 	{
 		private String name;
@@ -19,7 +19,7 @@ public class BoardSpace
 			{
 				return name;
 			}
-
+		
 
 		public void setName(String name)
 			{
@@ -46,6 +46,37 @@ public class BoardSpace
 			{
 				this.owned = owned;
 			}
-
+		public static void buyBoardSpace()
+		{
+			 Scanner userIntInput = new Scanner(System.in);
+			
+			if(Spaces.board.get(Monopoly.player1.getLocation()).isOwned() == true)
+				{
+					payRent();
+				}
+			else
+				{
+					System.out.println("This Property is unowned. Do you want to buy it?");
+					System.out.println("1 - Yes");
+					System.out.println("2 - No");
+					int playerChoice = userIntInput.nextInt();
+					
+					if(playerChoice == 1)
+						{
+							System.out.println("This Property's Cost Is: " + ((Property)Spaces.board.get(Monopoly.player1.getLocation())).getPrice());
+							int price = ((Property)Spaces.board.get(Monopoly.player1.getLocation())).getPrice();
+							System.out.println("This Cost will now be subtracted from your balance");
+							Monopoly.player1.subtractFromBalance(price);
+							System.out.println("Your balance is now: " + Monopoly.player1.getBalance());
+							
+							
+						}
+				}
+				
+		}
+		public static void payRent()
+		{
+			
+		}
 
 	}
