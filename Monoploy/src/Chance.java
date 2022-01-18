@@ -13,27 +13,41 @@ chance.add(new Card("You won the lottery, collect $250"));
 public static void landChance()
 {
 int chanceNum = (int)(Math.random()*3);
-switch(3)
+System.out.println(chanceNum);
+switch(chanceNum)
 {
-	case 1:
+	
+	case 0:
 			{
 				System.out.println("Go to directly to jail, dont pass go");
-				Monopoly.player1.incrementLocation(3);
+				Monopoly.player1.setLocation(10);
+				break;
+			}
+		
+	case 1:
+			{
+				System.out.println("You have income tax!, pay up $100! ");
+				if(Monopoly.player1.getBalance()<100)
+					{
+						System.out.println("Go to directly to jail, dont pass go");
+						Monopoly.player1.setLocation(10);
+					}
+			
+				Monopoly.player1.subtractFromBalance(100);
+				break;
 			}
 	case 2:
 			{
-				System.out.println("You have income tax!, pay up!");
-			
-				//Player.getBalance()-=100;
-			}
-	case 3:
-			{
-				System.out.println("Go to directly to jail, dont pass go");
-				Monopoly.player1.incrementLocation(3);
+				System.out.println("Advance to Boardwalk!");
+				Monopoly.player1.setLocation(39);
+				break;
 			}
 	
+
 }
+}
+	}
 
 		
 		
-	}
+	
