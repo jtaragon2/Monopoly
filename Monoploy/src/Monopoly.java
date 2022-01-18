@@ -76,6 +76,8 @@ public class Monopoly
 				case 3:
 						{
 							System.out.println("You landed on a community chest!");
+							Chance.landChance();
+
 							break;
 						}
 				case 4:
@@ -102,6 +104,8 @@ public class Monopoly
 				case 8:
 						{
 							System.out.println("You landed on a chance card!");
+							Chance.landChance();
+
 							break;
 						}
 				case 9:
@@ -152,6 +156,8 @@ public class Monopoly
 				case 18:
 						{
 							System.out.println("You landed on a community chest!");
+							Chance.landChance();
+
 							break;
 						}
 				case 19:
@@ -179,6 +185,8 @@ public class Monopoly
 				case 23:
 						{
 							System.out.println("You landed on a chance card!");
+							Chance.landChance();
+
 							break;
 						}
 				case 24:
@@ -235,6 +243,7 @@ public class Monopoly
 				case 34:
 						{
 							System.out.println("You landed on a community chest!");
+							Chance.landChance();
 							break;
 						}
 				case 35:
@@ -250,6 +259,8 @@ public class Monopoly
 				case 37:
 						{
 							System.out.println("You landed on a chance card!");
+							Chance.landChance();
+
 							break;
 						}
 				case 38:
