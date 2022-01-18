@@ -5,7 +5,8 @@ public class Monopoly
 	{
 
 		static Player player1 = new Player();
-	
+		static Scanner stringGetter = new Scanner(System.in);
+		private static String choice;
 		public static void main(String[] args)
 			{
 				Spaces.fillboard();
@@ -31,11 +32,55 @@ public class Monopoly
 			int dice2 = (int) (Math.random()*6+1);	
 			return dice1+dice2;
 		}
+		public static int ranNum() {
+			return (int) (Math.random()*6+1);
+		}
 		
-		public static void movePlayer()
+	public static void movePlayer()
 		{
-			int b = rollDice();
-			player1.incrementLocation(b);
+			if (player1.isJailStatus())
+				{
+					int turnsInJail = 0;
+					if (turnsInJail == 0)
+						{
+							System.out.println("You're in jail");
+						}
+					else
+						{
+							System.out.println("You're still in jail");
+						}
+					System.out.println("\n Would you like to \ta) Roll the dice to get out \tb) Pay the fine of $200");
+					System.out.println("Your balance is $" + player1.getBalance());
+					choice = stringGetter.nextLine();
+					if (choice.equalsIgnoreCase("a"))
+						{
+							int die1 = ranNum();
+							int die2 = ranNum();
+							System.out.println("You rolled a " + die1 + " a " + die2);
+							if (die1 == die2)
+								{
+									System.out.println("Those are doubles! You're free to go");
+									player1.setJailStatus(false);
+								}
+							else
+								{
+									System.out.println("Those are not doubles");
+									turnsInJail ++;
+								}
+						}
+					else
+						{
+							player1.subtractFromBalance(200);
+							System.out.println("Your balance is now $" + player1.getBalance());
+							player1.setJailStatus(false);
+							
+						}
+				}
+			else
+				{
+					int b = rollDice();
+					player1.incrementLocation(b);
+				}
 		}
 		
 		

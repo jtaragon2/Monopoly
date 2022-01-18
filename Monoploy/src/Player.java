@@ -7,7 +7,7 @@ public class Player
 		private boolean isInJail;
 
 		ArrayList<Integer> ownedProperties = new ArrayList<Integer>();
-		
+		private boolean jailStatus;
 		public Player()
 			{
 				balance = 1500;
@@ -52,7 +52,12 @@ public class Player
 
 		public void subtractFromBalance(int b)
 			{
+				if(balance-b>=0) {
 				balance -= b;
+				}else {
+					System.out.println("Negative Balance, do something else");
+					System.out.println("Transaction not completed");
+				}
 			}
 
 		public int getLocation()
@@ -73,4 +78,14 @@ public class Player
 				location-=40;
 			}
 		}
+
+		public boolean isJailStatus()
+			{
+				return jailStatus;
+			}
+
+		public void setJailStatus(boolean jailStatus)
+			{
+				this.jailStatus = jailStatus;
+			}
 	}
