@@ -13,16 +13,15 @@ public class Monopoly
 				System.out.println("Welcome to Monopoly your staring balance is " + player1.getBalance() + ".\nPress Enter to Role the dice!" );
 				pause();
 				
-				boolean h = true;
+				boolean stillplaying = true;
 				
-				while(h)
+				
+				while(stillplaying)
 					{
 						movePlayer();
 						checkLocation();
 						pause();
 					}
-
-				
 			}
 		
 		
@@ -102,6 +101,16 @@ public class Monopoly
 				case 2:
 						{
 							System.out.println("You have landed at " + Spaces.board.get(1).getName() + "!");
+							if(Spaces.board.get(1).isOwned()==false)
+								{
+									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+								}
+							
+							else
+							{
+								Spaces.board.get(1).payRent();
+							}
+							 
 							break;
 						}
 				case 3:
@@ -250,6 +259,7 @@ public class Monopoly
 				case 31:
 						{
 							System.out.println("You have done something illegal and now must go to Jail....");
+							player1.setInJail(true);
 							break;
 						}
 				case 32:
