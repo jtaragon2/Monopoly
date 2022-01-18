@@ -47,7 +47,7 @@ switch(chanceNum)
 }
 }
 	}
-
+//max
 		
 		
 	
