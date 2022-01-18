@@ -10,16 +10,11 @@ public class Monopoly
 			{
 				Spaces.fillboard();
 				System.out.println("Welcome to Monopoly your staring balance is " + player1.getBalance() + ".\nPress Enter to Role the dice!" );
-				pause();
+				Chance.landChance();
 				
 				boolean h = true;
 				
-				while(h)
-					{
-						movePlayer();
-						checkLocation();
-						pause();
-					}
+				
 
 				
 			}
