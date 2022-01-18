@@ -13,7 +13,6 @@ chance.add(new Card("You won the lottery, collect $250"));
 public static void landChance()
 {
 int chanceNum = (int)(Math.random()*3);
-System.out.println(chanceNum);
 switch(chanceNum)
 {
 	
@@ -21,6 +20,7 @@ switch(chanceNum)
 			{
 				System.out.println("Go to directly to jail, dont pass go");
 				Monopoly.player1.setLocation(10);
+				Monopoly.player1.setJailStatus(true);
 				break;
 			}
 		
@@ -31,6 +31,7 @@ switch(chanceNum)
 					{
 						System.out.println("Go to directly to jail, dont pass go");
 						Monopoly.player1.setLocation(10);
+						Monopoly.player1.setJailStatus(true);
 					}
 			
 				Monopoly.player1.subtractFromBalance(100);
