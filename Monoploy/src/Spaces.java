@@ -21,7 +21,7 @@ public class Spaces
 				board.add(new Property("Connecticut Avenue", 10, 120, 50, 8, 40, 100, 300, 450, 600, 60, "Brown"));
 				board.add(new BoardSpace("Jail", 11));
 				board.add(new Property("St. Charles Place", 12, 140, 100, 10, 50, 150, 450, 625, 750, 70, "Brown"));
-				board.add(new Utility("Electric Company", 13, 10, 30, 90, 160, 250, 24, "Brown"));
+				board.add(new Utility("Electric Company", 13, 150, 0));
 				board.add(new Property("States Avenue", 14, 140, 100, 10, 50, 150, 450, 625, 750, 70, "Brown"));
 				board.add(new Property("Virginia Avenue", 15, 160, 100, 12, 60, 180, 500, 700, 900, 80, "Brown"));
 				board.add(new Railroad("Pennsylvania Railroad", 16, 25, 50, 100, 200, 100, 200));
@@ -37,33 +37,20 @@ public class Spaces
 				board.add(new Railroad("B. & O. Railroad", 26, 25, 50, 100, 200, 100, 200));
 				board.add(new Property("Atlantic Avenue", 27, 260, 150, 22, 110, 330, 800, 975, 1150, 130, "Brown"));
 				board.add(new Property("Ventnor Avenue", 28, 260, 150, 22, 110, 330, 800, 975, 1150, 130, "Brown"));
-				board.add(new Utility("Water Works", 29, 280, 150, 24, 120, 360, 850, 1025, 1200, 140, "Brown"));
+				board.add(new Utility("Water Works", 29, 150, 0));
 				board.add(new Property("Marvin Gardens", 30, 280, 150, 24, 120, 360, 850, 1025, 1200, 140, "Brown"));
 				board.add(new BoardSpace("Go To Jail", 31));
 				board.add(new Property("Pacific Avenue", 32, 300, 200, 26, 130, 390, 900, 1100, 1275, 150, "Brown"));
 				board.add(new Property("North Carolina Avenue", 33, 300, 200, 26, 130, 390, 900, 1100, 1275, 150, "Brown"));
 				board.add(new BoardSpace("Community Chest", 34));
 				board.add(new Property("Pennsylvania Avenue", 35, 320, 200, 28, 150, 450, 1000, 1200, 1400, 160, "Brown"));
-				board.add(new Railroad("Short Line", 36, 10, 30, 90, 160, 250, 24, "Brown"));
+				board.add(new Railroad("Short Line", 36, 25, 50, 100, 200, 100, 200));
 				board.add(new BoardSpace("Chance Card", 37));
 				board.add(new Property("Park Place", 38, 350, 200, 35, 175, 500, 1100, 1300, 1500, 175, "Brown"));
-				board.add(new Property("Luxury Tax", 39, 10, 30, 90, 160, 250, 24, "Brown"));
+				board.add(new BoardSpace("Luxury Tax", 39));
 				board.add(new Property("Boardwalk", 40, 400, 200, 50, 200, 600, 1400, 1700, 2000, 200, "Brown"));
 				
 				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			
-				
-				
+
 			}
 	}

@@ -40,6 +40,42 @@ public class Property extends BoardSpace
 
 
 
+		public int getPrice()
+			{
+				return price;
+			}
+
+
+		public void setPrice(int price)
+			{
+				this.price = price;
+			}
+
+
+		public int getHouseprice()
+			{
+				return houseprice;
+			}
+
+
+		public void setHouseprice(int houseprice)
+			{
+				this.houseprice = houseprice;
+			}
+
+
+		public int getRent()
+			{
+				return rent;
+			}
+
+
+		public void setRent(int rent)
+			{
+				this.rent = rent;
+			}
+
+
 		public void setRentOne(int rentOne)
 			{
 				this.rentOne = rentOne;
