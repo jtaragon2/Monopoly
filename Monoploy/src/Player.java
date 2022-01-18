@@ -4,6 +4,8 @@ public class Player
 	{
 		private int balance;
 		private int location = 1;
+		private boolean isInJail;
+
 		ArrayList<Integer> ownedProperties = new ArrayList<Integer>();
 		
 		public Player()
@@ -31,6 +33,16 @@ public class Player
 		public int getBalance()
 			{
 				return balance;
+			}
+		
+		public boolean getIsInJail()
+			{
+				return isInJail;
+			}
+
+		public void setInJail(boolean isInJail)
+			{
+				this.isInJail = isInJail;
 			}
 
 		public void addToBalance(int b)
