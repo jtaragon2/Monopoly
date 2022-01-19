@@ -65,7 +65,7 @@ public class Monopoly
 				{
 					int die1 = ranNum();
 					int die2 = ranNum();
-					System.out.println("You rolled a " + die1 + " a " + die2);
+					System.out.println("You rolled a " + die1 + " and a " + die2);
 					if (die1 == die2)
 						{
 							System.out.println("Those are doubles! You're free to go");
