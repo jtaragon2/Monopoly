@@ -87,7 +87,6 @@ public class Monopoly
 		
 		public static void checkLocation()
 		{	
-				
 			//checks for properties	
 			switch(player1.getLocation())
 			{
