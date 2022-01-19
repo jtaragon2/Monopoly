@@ -51,6 +51,7 @@ public class Spaces
 				board.add(new BoardSpace("Luxury Tax", 39));
 				board.add(new Property("Boardwalk", 40, 400, 200, 50, 200, 600, 1400, 1700, 2000, 200, "Dark Blue"));
 			}
+		//new board
 		public static void fillSkiBoard()
 		{
 			skiingBoard.add(new BoardSpace("Go", 1));
