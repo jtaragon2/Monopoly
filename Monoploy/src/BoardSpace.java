@@ -50,12 +50,8 @@ public class BoardSpace
 		{
 			 Scanner userIntInput = new Scanner(System.in);
 			
-			if(Spaces.board.get(Monopoly.player1.getLocation()).isOwned() == true)
-				{
-					payRent();
-				}
-			else
-				{
+
+			
 					System.out.println("This Property is unowned. Do you want to buy it?");
 					System.out.println("1 - Yes");
 					System.out.println("2 - No");
@@ -69,9 +65,10 @@ public class BoardSpace
 							Monopoly.player1.subtractFromBalance(price);
 							System.out.println("Your balance is now: " + Monopoly.player1.getBalance());
 							
+							Monopoly.player1.ownedProperties.add(Monopoly.player1.getLocation());
 							
 						}
-				}
+		
 				
 		}
 		public static void payRent()
