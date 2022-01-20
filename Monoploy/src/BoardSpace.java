@@ -46,11 +46,17 @@ public class BoardSpace
 			{
 				this.owned = owned;
 			}
+		
+		public int getPrice()
+			{
+				return 1;
+			}
+		
 		public static void buyBoardSpace()
 		{
 			 Scanner userIntInput = new Scanner(System.in);
 			
-
+		//	 ( (Property) Spaces.board.get(Monopoly.player1.getLocation())).getPrice()
 			
 					System.out.println("This Property is unowned. Do you want to buy it?");
 					System.out.println("1 - Yes");
@@ -59,8 +65,8 @@ public class BoardSpace
 					
 					if(playerChoice == 1)
 						{
-							System.out.println("This Property's Cost Is: " + ((Property)Spaces.board.get(Monopoly.player1.getLocation())).getPrice());
-							int price = ((Property)Spaces.board.get(Monopoly.player1.getLocation())).getPrice();
+							System.out.println("This Property's Cost Is: " + ((Property)Spaces.board.get(Monopoly.player1.getLocation()-1)).getPrice());
+							int price = ((Property)Spaces.board.get(Monopoly.player1.getLocation()-1)).getPrice();
 							System.out.println("This Cost will now be subtracted from your balance");
 							Monopoly.player1.subtractFromBalance(price);
 							System.out.println("Your balance is now: " + Monopoly.player1.getBalance());

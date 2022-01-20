@@ -42,6 +42,7 @@ public class Monopoly
 			int dice2 = (int) (Math.random()*6+1);	
 			return dice1+dice2;
 		}
+		
 		public static int ranNum() {
 			return (int) (Math.random()*6+1);
 		}
@@ -90,9 +91,9 @@ public class Monopoly
 		{
 
 					int b = rollDice();
+					System.out.println("You rolled a total of " + b + "!");
 					player1.incrementLocation(b);
 		}
-		
 		
 		
 		public static void checkLocation()
