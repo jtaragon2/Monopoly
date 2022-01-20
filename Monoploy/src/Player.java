@@ -108,6 +108,7 @@ public class Player
 			}else if (ownedProperties.size()>1){
 				Collections.sort(ownedProperties);
 				System.out.println("You own "+ownedProperties.size()+" properties");
+				
 			}
 		}
 	}

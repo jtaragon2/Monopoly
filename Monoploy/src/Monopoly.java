@@ -25,7 +25,7 @@ public class Monopoly
 						if(player1.isJailStatus()==false)
 							{
 								movePlayer();
-								checkLocation();
+								checkLocation(player1);
 							}
 						pause();
 					}
@@ -96,15 +96,15 @@ public class Monopoly
 		}
 		
 		
-		public static void checkLocation()
+		public static void checkLocation(Player p)
 		{	
 			//checks for properties	
-			switch(player1.getLocation())
+			switch(p.getLocation())
 			{
 				
 				case 1:
 						{
-							player1.addToBalance(200);
+							p.addToBalance(200);
 							System.out.println("You are at GO");
 							break;
 						}
@@ -113,7 +113,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(1).getName() + "!");
 							if(Spaces.board.get(1).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -135,7 +135,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(3).getName() + "!");
 							if(Spaces.board.get(3).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -147,8 +147,8 @@ public class Monopoly
 						}
 				case 5:
 						{
-							player1.subtractFromBalance(100);
-							System.out.println("Income Tax: Pay $100 to the bank!\nYour balance is now "+player1.getBalance()+"!");
+							p.subtractFromBalance(100);
+							System.out.println("Income Tax: Pay $100 to the bank!\nYour balance is now "+p.getBalance()+"!");
 							break;
 						}
 				case 6:
@@ -163,13 +163,13 @@ public class Monopoly
 									
 									if(playerChoice == 1)
 										{
-											System.out.println("This Property's Cost Is: " + ((Railroad)Spaces.board.get(Monopoly.player1.getLocation()-1)).getPrice());
-											int price = ((Railroad)Spaces.board.get(Monopoly.player1.getLocation()-1)).getPrice();
+											System.out.println("This Property's Cost Is: " + ((Railroad)Spaces.board.get(p.getLocation()-1)).getPrice());
+											int price = ((Railroad)Spaces.board.get(p.getLocation()-1)).getPrice();
 											System.out.println("This Cost will now be subtracted from your balance");
-											Monopoly.player1.subtractFromBalance(price);
-											System.out.println("Your balance is now: " + Monopoly.player1.getBalance());
+											p.subtractFromBalance(price);
+											System.out.println("Your balance is now: " + p.getBalance());
 											
-											Monopoly.player1.ownedProperties.add(Monopoly.player1.getLocation());
+											p.ownedProperties.add(p.getLocation());
 											
 										}
 								}
@@ -185,7 +185,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(6).getName() + "!");
 							if(Spaces.board.get(6).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -206,7 +206,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(8).getName() + "!");
 							if(Spaces.board.get(8).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -220,7 +220,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(9).getName() + "!");
 							if(Spaces.board.get(9).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -239,7 +239,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(11).getName() + "!");
 							if(Spaces.board.get(11).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -260,13 +260,13 @@ public class Monopoly
 									
 									if(playerChoice == 1)
 										{
-											System.out.println("This Property's Cost Is: " + ((Utility)Spaces.board.get(Monopoly.player1.getLocation()-1)).getPrice());
-											int price = ((Utility)Spaces.board.get(Monopoly.player1.getLocation()-1)).getPrice();
+											System.out.println("This Property's Cost Is: " + ((Utility)Spaces.board.get(p.getLocation()-1)).getPrice());
+											int price = ((Utility)Spaces.board.get(p.getLocation()-1)).getPrice();
 											System.out.println("This Cost will now be subtracted from your balance");
-											Monopoly.player1.subtractFromBalance(price);
-											System.out.println("Your balance is now: " + Monopoly.player1.getBalance());
+											p.subtractFromBalance(price);
+											System.out.println("Your balance is now: " + p.getBalance());
 											
-											Monopoly.player1.ownedProperties.add(Monopoly.player1.getLocation());
+											p.ownedProperties.add(p.getLocation());
 											
 										}
 								}
@@ -282,7 +282,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(13).getName() + "!");
 							if(Spaces.board.get(13).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -296,7 +296,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(14).getName() + "!");
 							if(Spaces.board.get(14).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -317,13 +317,13 @@ public class Monopoly
 									
 									if(playerChoice == 1)
 										{
-											System.out.println("This Property's Cost Is: " + ((Railroad)Spaces.board.get(Monopoly.player1.getLocation()-1)).getPrice());
-											int price = ((Railroad)Spaces.board.get(Monopoly.player1.getLocation()-1)).getPrice();
+											System.out.println("This Property's Cost Is: " + ((Railroad)Spaces.board.get(p.getLocation()-1)).getPrice());
+											int price = ((Railroad)Spaces.board.get(p.getLocation()-1)).getPrice();
 											System.out.println("This Cost will now be subtracted from your balance");
-											Monopoly.player1.subtractFromBalance(price);
-											System.out.println("Your balance is now: " + Monopoly.player1.getBalance());
+											p.subtractFromBalance(price);
+											System.out.println("Your balance is now: " + p.getBalance());
 											
-											Monopoly.player1.ownedProperties.add(Monopoly.player1.getLocation());
+											p.ownedProperties.add(p.getLocation());
 											
 										}
 								}
@@ -339,7 +339,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(16).getName() + "!");
 							if(Spaces.board.get(16).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -360,7 +360,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(18).getName() + "!");
 							if(Spaces.board.get(18).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -374,7 +374,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(19).getName() + "!");
 							if(Spaces.board.get(19).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -385,8 +385,8 @@ public class Monopoly
 						}
 				case 21:
 						{
-							player1.addToBalance(500);
-							System.out.println("Free Parking!!!!! You gained $500!\nYour balance is now " +player1.getBalance()+"!");
+							p.addToBalance(500);
+							System.out.println("Free Parking!!!!! You gained $500!\nYour balance is now " +p.getBalance()+"!");
 							
 							break;
 						}
@@ -395,7 +395,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(21).getName() + "!");
 							if(Spaces.board.get(21).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -416,7 +416,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(23).getName() + "!");
 							if(Spaces.board.get(23).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -430,7 +430,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(24).getName() + "!");
 							if(Spaces.board.get(24).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -451,13 +451,13 @@ public class Monopoly
 									
 									if(playerChoice == 1)
 										{
-											System.out.println("This Property's Cost Is: " + ((Railroad)Spaces.board.get(Monopoly.player1.getLocation()-1)).getPrice());
-											int price = ((Railroad)Spaces.board.get(Monopoly.player1.getLocation()-1)).getPrice();
+											System.out.println("This Property's Cost Is: " + ((Railroad)Spaces.board.get(p.getLocation()-1)).getPrice());
+											int price = ((Railroad)Spaces.board.get(p.getLocation()-1)).getPrice();
 											System.out.println("This Cost will now be subtracted from your balance");
-											Monopoly.player1.subtractFromBalance(price);
-											System.out.println("Your balance is now: " + Monopoly.player1.getBalance());
+											p.subtractFromBalance(price);
+											System.out.println("Your balance is now: " + p.getBalance());
 											
-											Monopoly.player1.ownedProperties.add(Monopoly.player1.getLocation());
+											p.ownedProperties.add(p.getLocation());
 											
 										}
 								}
@@ -473,7 +473,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(26).getName() + "!");
 							if(Spaces.board.get(26).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -487,7 +487,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(27).getName() + "!");
 							if(Spaces.board.get(27).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -508,13 +508,13 @@ public class Monopoly
 									
 									if(playerChoice == 1)
 										{
-											System.out.println("This Property's Cost Is: " + ((Utility)Spaces.board.get(Monopoly.player1.getLocation()-1)).getPrice());
-											int price = ((Utility)Spaces.board.get(Monopoly.player1.getLocation()-1)).getPrice();
+											System.out.println("This Property's Cost Is: " + ((Utility)Spaces.board.get(p.getLocation()-1)).getPrice());
+											int price = ((Utility)Spaces.board.get(p.getLocation()-1)).getPrice();
 											System.out.println("This Cost will now be subtracted from your balance");
-											Monopoly.player1.subtractFromBalance(price);
-											System.out.println("Your balance is now: " + Monopoly.player1.getBalance());
+											p.subtractFromBalance(price);
+											System.out.println("Your balance is now: " + p.getBalance());
 											
-											Monopoly.player1.ownedProperties.add(Monopoly.player1.getLocation());
+											p.ownedProperties.add(p.getLocation());
 											
 										}
 								}
@@ -530,7 +530,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(29).getName() + "!");
 							if(Spaces.board.get(29).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -542,7 +542,7 @@ public class Monopoly
 				case 31:
 						{
 							System.out.println("You have done something illegal and now must go to Jail....");
-							player1.setJailStatus(true);
+							p.setJailStatus(true);
 							break;
 						}
 				case 32:
@@ -550,7 +550,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(31).getName() + "!");
 							if(Spaces.board.get(31).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -564,7 +564,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(32).getName() + "!");
 							if(Spaces.board.get(32).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -584,7 +584,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(34).getName() + "!");
 							if(Spaces.board.get(34).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -605,13 +605,13 @@ public class Monopoly
 									
 									if(playerChoice == 1)
 										{
-											System.out.println("This Property's Cost Is: " + ((Railroad)Spaces.board.get(Monopoly.player1.getLocation()-1)).getPrice());
-											int price = ((Railroad)Spaces.board.get(Monopoly.player1.getLocation()-1)).getPrice();
+											System.out.println("This Property's Cost Is: " + ((Railroad)Spaces.board.get(p.getLocation()-1)).getPrice());
+											int price = ((Railroad)Spaces.board.get(p.getLocation()-1)).getPrice();
 											System.out.println("This Cost will now be subtracted from your balance");
-											Monopoly.player1.subtractFromBalance(price);
-											System.out.println("Your balance is now: " + Monopoly.player1.getBalance());
+											p.subtractFromBalance(price);
+											System.out.println("Your balance is now: " + p.getBalance());
 											
-											Monopoly.player1.ownedProperties.add(Monopoly.player1.getLocation());
+											player1.ownedProperties.add(player1.getLocation());
 											
 										}
 								}
@@ -634,7 +634,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(37).getName() + "!");
 							if(Spaces.board.get(37).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
@@ -645,7 +645,7 @@ public class Monopoly
 						}
 				case 39:
 						{
-							player1.subtractFromBalance(75);
+							p.subtractFromBalance(75);
 							System.out.println("You have landed on " + Spaces.board.get(38).getName() + " and must pay $75 to the bank!\nYour balance is now " +player1.getBalance()+"!");
 							break;
 						}
@@ -654,7 +654,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(39).getName() + "!");
 							if(Spaces.board.get(39).isOwned()==false)
 								{
-									Spaces.board.get(player1.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace();
 								}
 								
 							else
