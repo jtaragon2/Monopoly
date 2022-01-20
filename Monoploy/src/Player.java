@@ -1,11 +1,12 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Player
 	{
 		private int balance;
 		private int location = 1;
 		private boolean isInJail;
-
+		private String name;
 		ArrayList<Integer> ownedProperties = new ArrayList<Integer>();
 		private boolean jailStatus;
 		public Player()
@@ -88,4 +89,25 @@ public class Player
 			{
 				this.jailStatus = jailStatus;
 			}
+		
+		public String getName()
+			{
+				return name;
+			}
+
+		public void setName(String name)
+			{
+				this.name = name;
+			}
+
+		public void printStats() {
+			System.out.println("Your name is "+name);
+			System.out.println("Your balance is $"+balance);
+			if (ownedProperties.isEmpty()) {
+				System.out.println("You don't own any properties");
+			}else if (ownedProperties.size()>1){
+				Collections.sort(ownedProperties);
+				System.out.println("You own "+ownedProperties.size()+" properties");
+			}
+		}
 	}
