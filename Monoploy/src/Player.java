@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
-
+import java.util.Scanner;
 public class Player
 	{
 		private int balance;
@@ -9,6 +9,7 @@ public class Player
 		private String name;
 		ArrayList<Integer> ownedProperties = new ArrayList<Integer>();
 		private boolean jailStatus;
+		private Scanner stringGetter = new Scanner(System.in);
 		public Player()
 			{
 				balance = 1500;
@@ -95,9 +96,10 @@ public class Player
 				return name;
 			}
 
-		public void setName(String name)
+		public void setName()
 			{
-				this.name = name;
+				System.out.println("What's your preferred name?");
+				name = stringGetter.nextLine();
 			}
 
 		public void printStats() {
@@ -108,6 +110,7 @@ public class Player
 			}else if (ownedProperties.size()>1){
 				Collections.sort(ownedProperties);
 				System.out.println("You own "+ownedProperties.size()+" properties");
+				
 			}
 		}
 	}
