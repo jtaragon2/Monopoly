@@ -8,15 +8,16 @@ public class Monopoly
 		static Player player1 = new Player();
 		static Player player2 = new Player();
 		static Scanner stringGetter = new Scanner(System.in);
+		static Scanner intGetter = new Scanner(System.in);
 		private static String choice;
 		private static int turnCounter = 0;
+		private static int intChoice;
 
 		public static void main(String[] args)
 			{
 				Spaces.fillboard();
-				System.out.println("Welcome to Monopoly your starting balance is " + player1.getBalance()
-						+ ".\nPress Enter to Role the dice!");
-
+				System.out.println("Welcome to Monopoly! \nWhich version would you like to play \n1) Regular Monopoly\n2) Ski Monopoly");
+				
 				pause();
 
 				while (stillplaying)
@@ -36,12 +37,15 @@ public class Monopoly
 							}
 						else
 							{
-								if(player2.isJailStatus()) {
-									
-								}else {
-									movePlayer(player2);
-									checkLocation(player2);
-								}
+								if (player2.isJailStatus())
+									{
+
+									}
+								else
+									{
+										movePlayer(player2);
+										checkLocation(player2);
+									}
 								pause();
 							}
 					}
@@ -72,7 +76,7 @@ public class Monopoly
 					{
 						System.out.println("You're still in jail");
 					}
-				System.out.println("\n Would you like to \ta) Roll the dice to get out \tb) Pay the fine of $200");
+				System.out.println("\nWould you like to \t\na) Roll the dice to get out \t\nb) Pay the fine of $200");
 				System.out.println("Your balance is $" + p.getBalance());
 				choice = stringGetter.nextLine();
 				if (choice.equalsIgnoreCase("a"))
@@ -102,7 +106,16 @@ public class Monopoly
 
 		public static void movePlayer(Player p)
 			{
-
+				System.out.println("Would you like to see your stats?\n\t1) Yes\n\t2) No");
+				intChoice = intGetter.nextInt();
+				if (intChoice == 1)
+					{
+						p.printStats();
+					}
+				else
+					{
+						System.out.println("Okay");
+					}
 				int b = rollDice();
 				System.out.println("You rolled a total of " + b + "!");
 				p.incrementLocation(b);
@@ -114,57 +127,57 @@ public class Monopoly
 				switch (p.getLocation())
 					{
 
-					case 1:
+					case 0:
 						{
 							p.addToBalance(200);
 							System.out.println("You are at GO");
 							break;
 						}
-					case 2:
+					case 1:
 						{
 							System.out.println("You have landed at " + Spaces.board.get(1).getName() + "!");
 							if (Spaces.board.get(1).isOwned() == false)
 								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
 								}
 
 							else
 								{
-									Spaces.board.get(1).payRent();
+									Spaces.board.get(1).payRent(p);
 								}
+
+							break;
+						}
+					case 2:
+						{
+							System.out.println("You landed on a community chest!");
+							Chance.landChance(p);
 
 							break;
 						}
 					case 3:
 						{
-							System.out.println("You landed on a community chest!");
-							Chance.landChance();
-
-							break;
-						}
-					case 4:
-						{
 							System.out.println("You have landed at " + Spaces.board.get(3).getName() + "!");
 							if (Spaces.board.get(3).isOwned() == false)
 								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
 								}
 
 							else
 								{
-									Spaces.board.get(3).payRent();
+									Spaces.board.get(3).payRent(p);
 								}
 							break;
 
 						}
-					case 5:
+					case 4:
 						{
 							p.subtractFromBalance(100);
 							System.out.println(
 									"Income Tax: Pay $100 to the bank!\nYour balance is now " + p.getBalance() + "!");
 							break;
 						}
-					case 6:
+					case 5:
 						{
 							System.out.println("You have landed at the " + Spaces.board.get(5).getName() + "!");
 							if (Spaces.board.get(5).isOwned() == false)
@@ -190,80 +203,80 @@ public class Monopoly
 
 							else
 								{
-									Spaces.board.get(5).payRent();
+									Spaces.board.get(5).payRent(p);
+								}
+							break;
+						}
+					case 6:
+						{
+							System.out.println("You have landed at " + Spaces.board.get(6).getName() + "!");
+							if (Spaces.board.get(6).isOwned() == false)
+								{
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
+								}
+
+							else
+								{
+									Spaces.board.get(6).payRent(p);
 								}
 							break;
 						}
 					case 7:
 						{
-							System.out.println("You have landed at " + Spaces.board.get(6).getName() + "!");
-							if (Spaces.board.get(6).isOwned() == false)
-								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
-								}
+							System.out.println("You landed on a chance card!");
+							Chance.landChance(p);
 
-							else
-								{
-									Spaces.board.get(6).payRent();
-								}
 							break;
 						}
 					case 8:
 						{
-							System.out.println("You landed on a chance card!");
-							Chance.landChance();
-
-							break;
-						}
-					case 9:
-						{
 							System.out.println("You have landed at " + Spaces.board.get(8).getName() + "!");
 							if (Spaces.board.get(8).isOwned() == false)
 								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
 								}
 
 							else
 								{
-									Spaces.board.get(8).payRent();
+									Spaces.board.get(8).payRent(p);
+								}
+							break;
+						}
+					case 9:
+						{
+							System.out.println("You have landed at " + Spaces.board.get(9).getName() + "!");
+							if (Spaces.board.get(9).isOwned() == false)
+								{
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
+								}
+
+							else
+								{
+									Spaces.board.get(9).payRent(p);
 								}
 							break;
 						}
 					case 10:
 						{
-							System.out.println("You have landed at " + Spaces.board.get(9).getName() + "!");
-							if (Spaces.board.get(9).isOwned() == false)
-								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
-								}
-
-							else
-								{
-									Spaces.board.get(9).payRent();
-								}
-							break;
-						}
-					case 11:
-						{
 							System.out.println("You have landed at the " + Spaces.board.get(10).getName()
 									+ "! You are just visiting!");
 							break;
 						}
-					case 12:
+					case 11:
 						{
 							System.out.println("You have landed at " + Spaces.board.get(11).getName() + "!");
 							if (Spaces.board.get(11).isOwned() == false)
 								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
 								}
 
 							else
 								{
-									Spaces.board.get(11).payRent();
+									Spaces.board.get(11).payRent(p);
 								}
 							break;
 						}
-					case 13:
+					case 12:
 						{
 							System.out.println("You have landed at the " + Spaces.board.get(12).getName() + "!");
 							if (Spaces.board.get(12).isOwned() == false)
@@ -289,39 +302,39 @@ public class Monopoly
 
 							else
 								{
-									Spaces.board.get(12).payRent();
+									Spaces.board.get(12).payRent(p);
+								}
+							break;
+						}
+					case 13:
+						{
+							System.out.println("You have landed at " + Spaces.board.get(13).getName() + "!");
+							if (Spaces.board.get(13).isOwned() == false)
+								{
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
+								}
+
+							else
+								{
+									Spaces.board.get(13).payRent(p);
 								}
 							break;
 						}
 					case 14:
 						{
-							System.out.println("You have landed at " + Spaces.board.get(13).getName() + "!");
-							if (Spaces.board.get(13).isOwned() == false)
+							System.out.println("You have landed at " + Spaces.board.get(14).getName() + "!");
+							if (Spaces.board.get(14).isOwned() == false)
 								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
 								}
 
 							else
 								{
-									Spaces.board.get(13).payRent();
+									Spaces.board.get(14).payRent(p);
 								}
 							break;
 						}
 					case 15:
-						{
-							System.out.println("You have landed at " + Spaces.board.get(14).getName() + "!");
-							if (Spaces.board.get(14).isOwned() == false)
-								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
-								}
-
-							else
-								{
-									Spaces.board.get(14).payRent();
-								}
-							break;
-						}
-					case 16:
 						{
 							System.out.println("You have landed at the " + Spaces.board.get(15).getName() + "!");
 							if (Spaces.board.get(15).isOwned() == false)
@@ -347,60 +360,60 @@ public class Monopoly
 
 							else
 								{
-									Spaces.board.get(15).payRent();
+									Spaces.board.get(15).payRent(p);
+								}
+							break;
+						}
+					case 16:
+						{
+							System.out.println("You have landed at " + Spaces.board.get(16).getName() + "!");
+							if (Spaces.board.get(16).isOwned() == false)
+								{
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
+								}
+
+							else
+								{
+									Spaces.board.get(16).payRent(p);
 								}
 							break;
 						}
 					case 17:
 						{
-							System.out.println("You have landed at " + Spaces.board.get(16).getName() + "!");
-							if (Spaces.board.get(16).isOwned() == false)
-								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
-								}
+							System.out.println("You landed on a community chest!");
+							Chance.landChance(p);
 
-							else
-								{
-									Spaces.board.get(16).payRent();
-								}
 							break;
 						}
 					case 18:
 						{
-							System.out.println("You landed on a community chest!");
-							Chance.landChance();
+							System.out.println("You have landed at " + Spaces.board.get(18).getName() + "!");
+							if (Spaces.board.get(18).isOwned() == false)
+								{
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
+								}
 
+							else
+								{
+									Spaces.board.get(18).payRent(p);
+								}
 							break;
 						}
 					case 19:
 						{
-							System.out.println("You have landed at " + Spaces.board.get(18).getName() + "!");
-							if (Spaces.board.get(18).isOwned() == false)
+							System.out.println("You have landed at " + Spaces.board.get(19).getName() + "!");
+							if (Spaces.board.get(19).isOwned() == false)
 								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
 								}
 
 							else
 								{
-									Spaces.board.get(18).payRent();
+									Spaces.board.get(19).payRent(p);
 								}
 							break;
 						}
 					case 20:
-						{
-							System.out.println("You have landed at " + Spaces.board.get(19).getName() + "!");
-							if (Spaces.board.get(19).isOwned() == false)
-								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
-								}
-
-							else
-								{
-									Spaces.board.get(19).payRent();
-								}
-							break;
-						}
-					case 21:
 						{
 							p.addToBalance(500);
 							System.out.println(
@@ -408,56 +421,56 @@ public class Monopoly
 
 							break;
 						}
-					case 22:
+					case 21:
 						{
 							System.out.println("You have landed at " + Spaces.board.get(21).getName() + "!");
 							if (Spaces.board.get(21).isOwned() == false)
 								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
 								}
 
 							else
 								{
-									Spaces.board.get(21).payRent();
+									Spaces.board.get(21).payRent(p);
 								}
+							break;
+						}
+					case 22:
+						{
+							System.out.println("You landed on a chance card!");
+							Chance.landChance(p);
+
 							break;
 						}
 					case 23:
 						{
-							System.out.println("You landed on a chance card!");
-							Chance.landChance();
+							System.out.println("You have landed at " + Spaces.board.get(23).getName() + "!");
+							if (Spaces.board.get(23).isOwned() == false)
+								{
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
+								}
 
+							else
+								{
+									Spaces.board.get(23).payRent(p);
+								}
 							break;
 						}
 					case 24:
 						{
-							System.out.println("You have landed at " + Spaces.board.get(23).getName() + "!");
-							if (Spaces.board.get(23).isOwned() == false)
+							System.out.println("You have landed at " + Spaces.board.get(24).getName() + "!");
+							if (Spaces.board.get(24).isOwned() == false)
 								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
 								}
 
 							else
 								{
-									Spaces.board.get(23).payRent();
+									Spaces.board.get(24).payRent(p);
 								}
 							break;
 						}
 					case 25:
-						{
-							System.out.println("You have landed at " + Spaces.board.get(24).getName() + "!");
-							if (Spaces.board.get(24).isOwned() == false)
-								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
-								}
-
-							else
-								{
-									Spaces.board.get(24).payRent();
-								}
-							break;
-						}
-					case 26:
 						{
 							System.out.println("You have landed at the " + Spaces.board.get(25).getName() + "!");
 							if (Spaces.board.get(25).isOwned() == false)
@@ -483,39 +496,39 @@ public class Monopoly
 
 							else
 								{
-									Spaces.board.get(25).payRent();
+									Spaces.board.get(25).payRent(p);
+								}
+							break;
+						}
+					case 26:
+						{
+							System.out.println("You have landed at " + Spaces.board.get(26).getName() + "!");
+							if (Spaces.board.get(26).isOwned() == false)
+								{
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
+								}
+
+							else
+								{
+									Spaces.board.get(26).payRent(p);
 								}
 							break;
 						}
 					case 27:
 						{
-							System.out.println("You have landed at " + Spaces.board.get(26).getName() + "!");
-							if (Spaces.board.get(26).isOwned() == false)
+							System.out.println("You have landed at " + Spaces.board.get(27).getName() + "!");
+							if (Spaces.board.get(27).isOwned() == false)
 								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
 								}
 
 							else
 								{
-									Spaces.board.get(26).payRent();
+									Spaces.board.get(27).payRent(p);
 								}
 							break;
 						}
 					case 28:
-						{
-							System.out.println("You have landed at " + Spaces.board.get(27).getName() + "!");
-							if (Spaces.board.get(27).isOwned() == false)
-								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
-								}
-
-							else
-								{
-									Spaces.board.get(27).payRent();
-								}
-							break;
-						}
-					case 29:
 						{
 							System.out.println("You have landed at the " + Spaces.board.get(28).getName() + "!");
 							if (Spaces.board.get(28).isOwned() == false)
@@ -541,79 +554,79 @@ public class Monopoly
 
 							else
 								{
-									Spaces.board.get(28).payRent();
+									Spaces.board.get(28).payRent(p);
+								}
+							break;
+						}
+					case 29:
+						{
+							System.out.println("You have landed at " + Spaces.board.get(29).getName() + "!");
+							if (Spaces.board.get(29).isOwned() == false)
+								{
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
+								}
+
+							else
+								{
+									Spaces.board.get(29).payRent(p);
 								}
 							break;
 						}
 					case 30:
 						{
-							System.out.println("You have landed at " + Spaces.board.get(29).getName() + "!");
-							if (Spaces.board.get(29).isOwned() == false)
-								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
-								}
-
-							else
-								{
-									Spaces.board.get(29).payRent();
-								}
-							break;
-						}
-					case 31:
-						{
 							System.out.println("You have done something illegal and now must go to Jail....");
 							p.setJailStatus(true);
 							break;
 						}
-					case 32:
+					case 31:
 						{
 							System.out.println("You have landed at " + Spaces.board.get(31).getName() + "!");
 							if (Spaces.board.get(31).isOwned() == false)
 								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
 								}
 
 							else
 								{
-									Spaces.board.get(31).payRent();
+									Spaces.board.get(31).payRent(p);
+								}
+							break;
+						}
+					case 32:
+						{
+							System.out.println("You have landed at " + Spaces.board.get(32).getName() + "!");
+							if (Spaces.board.get(32).isOwned() == false)
+								{
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
+								}
+
+							else
+								{
+									Spaces.board.get(32).payRent(p);
 								}
 							break;
 						}
 					case 33:
 						{
-							System.out.println("You have landed at " + Spaces.board.get(32).getName() + "!");
-							if (Spaces.board.get(32).isOwned() == false)
-								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
-								}
-
-							else
-								{
-									Spaces.board.get(32).payRent();
-								}
+							System.out.println("You landed on a community chest!");
+							Chance.landChance(p);
 							break;
 						}
 					case 34:
 						{
-							System.out.println("You landed on a community chest!");
-							Chance.landChance();
-							break;
-						}
-					case 35:
-						{
 							System.out.println("You have landed at " + Spaces.board.get(34).getName() + "!");
 							if (Spaces.board.get(34).isOwned() == false)
 								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
 								}
 
 							else
 								{
-									Spaces.board.get(34).payRent();
+									Spaces.board.get(34).payRent(p);
 								}
 							break;
 						}
-					case 36:
+					case 35:
 						{
 							System.out.println("You have landed at the " + Spaces.board.get(35).getName() + "!");
 							if (Spaces.board.get(35).isOwned() == false)
@@ -639,32 +652,32 @@ public class Monopoly
 
 							else
 								{
-									Spaces.board.get(35).payRent();
+									Spaces.board.get(35).payRent(p);
 								}
+							break;
+						}
+					case 36:
+						{
+							System.out.println("You landed on a chance card!");
+							Chance.landChance(p);
+
 							break;
 						}
 					case 37:
 						{
-							System.out.println("You landed on a chance card!");
-							Chance.landChance();
-
-							break;
-						}
-					case 38:
-						{
 							System.out.println("You have landed at " + Spaces.board.get(37).getName() + "!");
 							if (Spaces.board.get(37).isOwned() == false)
 								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
 								}
 
 							else
 								{
-									Spaces.board.get(37).payRent();
+									Spaces.board.get(37).payRent(p);
 								}
 							break;
 						}
-					case 39:
+					case 38:
 						{
 							p.subtractFromBalance(75);
 							System.out.println("You have landed on " + Spaces.board.get(38).getName()
@@ -672,17 +685,17 @@ public class Monopoly
 									+ "!");
 							break;
 						}
-					case 40:
+					case 39:
 						{
 							System.out.println("You have landed at " + Spaces.board.get(39).getName() + "!");
 							if (Spaces.board.get(39).isOwned() == false)
 								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace();
+									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
 								}
 
 							else
 								{
-									Spaces.board.get(39).payRent();
+									Spaces.board.get(39).payRent(p);
 								}
 							break;
 						}
