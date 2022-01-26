@@ -11,6 +11,7 @@ public class Player
 		ArrayList<Integer> ownedProperties = new ArrayList<Integer>();
 		private boolean jailStatus;
 		private Scanner stringGetter = new Scanner(System.in);
+		boolean back =false;
 
 		public Player()
 			{
@@ -86,10 +87,24 @@ public class Player
 
 		public void incrementLocation(int il)
 			{
-				location += il;
-				if (location > 40)
+				if (back)
 					{
-						location -= 40;
+						location-=il;
+						if(location<0) {
+							location+=40;
+							balance+=200;
+							System.out.println("\nYou have passed GO backwards, collect $200");
+						}
+					}
+				else
+					{
+						location += il;
+						if (location > 40)
+							{
+								location -= 40;
+								balance += 200;
+								System.out.println("\nYou have passed GO, collect $200");
+							}
 					}
 			}
 
@@ -118,6 +133,14 @@ public class Player
 			{
 				System.out.println("Your name is " + name);
 				System.out.println("Your balance is $" + balance);
+				if (jailStatus)
+					{
+						System.out.println("You are in jail");
+					}
+				else
+					{
+						System.out.println("You are not in jail");
+					}
 				if (ownedProperties.isEmpty())
 					{
 						System.out.println("You don't own any properties");
@@ -127,19 +150,22 @@ public class Player
 						Collections.sort(ownedProperties);
 						System.out.println("You own " + ownedProperties.size() + " properties");
 						printProperties();
-					}else {
-					System.out.println("You own one property:");
-					System.out.println(Spaces.board.get(ownedProperties.get(0)).getName());
 					}
-				
+				else
+					{
+						System.out.println("You own one property:");
+						System.out.println(Spaces.board.get(ownedProperties.get(0)).getName());
+					}
+				System.out.println();
 			}
 
 		public void printProperties()
 			{
 				System.out.println();
-				for(Integer i: ownedProperties){
-					System.out.println();
-					System.out.println(Spaces.board.get(ownedProperties.get(i)).getName());
-				}
+				for (Integer i : ownedProperties)
+					{
+						System.out.println();
+						System.out.println(Spaces.board.get(ownedProperties.get(i)).getName());
+					}
 			}
 	}

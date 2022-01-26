@@ -15,11 +15,12 @@ public class Monopoly
 
 		public static void main(String[] args)
 			{
-				Spaces.fillboard();
-				System.out.println("Welcome to Monopoly! \nWhich version would you like to play \n1) Regular Monopoly\n2) Ski Monopoly");
-				
+				System.out.print("Player 1, ");
+				player1.setName();
+				System.out.print("Player 2, ");
+				player2.setName();
+				typeSetter();
 				pause();
-
 				while (stillplaying)
 					{
 						if (turnCounter % 2 == 0)
@@ -30,6 +31,7 @@ public class Monopoly
 									}
 								else
 									{
+										System.out.print(player1.getName() + ", ");
 										movePlayer(player1);
 										checkLocation(player1);
 									}
@@ -37,9 +39,10 @@ public class Monopoly
 							}
 						else
 							{
+								System.out.print(player2.getName() + ", ");
 								if (player2.isJailStatus())
 									{
-
+										jail(player2);
 									}
 								else
 									{
@@ -47,9 +50,26 @@ public class Monopoly
 										checkLocation(player2);
 									}
 								pause();
+
 							}
+						turnCounter++;
 					}
 
+			}
+
+		private static void typeSetter()
+			{
+				System.out.println(
+						"Welcome to Monopoly! \nWhich version would you like to play \n\t1) Regular Monopoly\n\t2) Ski Monopoly");
+				intChoice = intGetter.nextInt();
+				if (intChoice==1)
+					{
+						Spaces.fillboard();
+					}
+				else
+					{
+						Spaces.fillSkiBoard();
+					}
 			}
 
 		public static int rollDice()
@@ -70,11 +90,11 @@ public class Monopoly
 
 				if (turnsInJail == 0)
 					{
-						System.out.println("You're in jail");
+						System.out.println(p.getName()+", You're in jail");
 					}
 				else
 					{
-						System.out.println("You're still in jail");
+						System.out.println(p.getName()+", You're still in jail");
 					}
 				System.out.println("\nWould you like to \t\na) Roll the dice to get out \t\nb) Pay the fine of $200");
 				System.out.println("Your balance is $" + p.getBalance());
@@ -705,6 +725,7 @@ public class Monopoly
 
 		public static void pause()
 			{
+				System.out.println("Press enter to continue");
 				Scanner userFakeInput = new Scanner(System.in);
 				String pause;
 				pause = userFakeInput.nextLine();
