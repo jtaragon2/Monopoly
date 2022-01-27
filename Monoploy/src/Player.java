@@ -11,7 +11,7 @@ public class Player
 		ArrayList<Integer> ownedProperties = new ArrayList<Integer>();
 		private boolean jailStatus;
 		private Scanner stringGetter = new Scanner(System.in);
-		boolean back =false;
+		boolean back = false;
 
 		public Player()
 			{
@@ -89,12 +89,13 @@ public class Player
 			{
 				if (back)
 					{
-						location-=il;
-						if(location<0) {
-							location+=40;
-							balance+=200;
-							System.out.println("\nYou have passed GO backwards, collect $200");
-						}
+						location -= il;
+						if (location < 0)
+							{
+								location += 40;
+								balance += 200;
+								System.out.println("\nYou have passed GO backwards, collect $200");
+							}
 					}
 				else
 					{
@@ -168,4 +169,15 @@ public class Player
 						System.out.println(Spaces.board.get(ownedProperties.get(i)).getName());
 					}
 			}
+
+		public boolean isBack()
+			{
+				return back;
+			}
+
+		public void setBack(boolean back)
+			{
+				this.back = back;
+			}
+		
 	}

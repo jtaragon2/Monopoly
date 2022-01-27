@@ -62,7 +62,7 @@ public class Monopoly
 				System.out.println(
 						"Welcome to Monopoly! \nWhich version would you like to play \n\t1) Regular Monopoly\n\t2) Ski Monopoly");
 				intChoice = intGetter.nextInt();
-				if (intChoice==1)
+				if (intChoice == 1)
 					{
 						Spaces.fillboard();
 					}
@@ -90,11 +90,11 @@ public class Monopoly
 
 				if (turnsInJail == 0)
 					{
-						System.out.println(p.getName()+", You're in jail");
+						System.out.println(p.getName() + ", You're in jail");
 					}
 				else
 					{
-						System.out.println(p.getName()+", You're still in jail");
+						System.out.println(p.getName() + ", You're still in jail");
 					}
 				System.out.println("\nWould you like to \t\na) Roll the dice to get out \t\nb) Pay the fine of $200");
 				System.out.println("Your balance is $" + p.getBalance());
@@ -163,7 +163,7 @@ public class Monopoly
 
 							else
 								{
-									Spaces.board.get(1).payRent(p);
+									((Property)(Spaces.board.get(1))).payRent(p);
 								}
 
 							break;
@@ -435,10 +435,18 @@ public class Monopoly
 						}
 					case 20:
 						{
-							p.addToBalance(500);
-							System.out.println(
-									"Free Parking!!!!! You gained $500!\nYour balance is now " + p.getBalance() + "!");
 
+							System.out.println("You have landed at Free Parking!");
+							System.out.println(
+									"You not go backwards. If you land on Free Parking again, you will start moving forward again. Have Fun!");
+							if (p.isBack())
+								{
+									p.setBack(false);
+								}
+							else
+								{
+									p.setBack(true);
+								}
 							break;
 						}
 					case 21:
@@ -726,9 +734,7 @@ public class Monopoly
 		public static void pause()
 			{
 				System.out.println("Press enter to continue");
-				Scanner userFakeInput = new Scanner(System.in);
-				String pause;
-				pause = userFakeInput.nextLine();
+				choice = stringGetter.nextLine();
 			}
 
 	}

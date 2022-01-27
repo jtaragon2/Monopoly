@@ -4,7 +4,7 @@ public class BoardSpace
 	{
 		private String name;
 		private int location;
-		protected boolean owned;
+		protected boolean owned = false;
 		private static Scanner userIntInput = new Scanner(System.in);
 
 		public BoardSpace(String n, int l)
@@ -80,7 +80,7 @@ public class BoardSpace
 
 		public void payRent(Player P)
 			{
-
+				
 			}
 
 	}

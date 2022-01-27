@@ -4,25 +4,27 @@ public class Utility extends BoardSpace
 		private int rent;
 		private int price;
 		private int numOfUtilities;
-		
-		
-		public Utility(String n, int l,  int p,  int u)
-		{
-			setName(n);
-			setLocation(l);
-			price = p;
-			numOfUtilities = u;
-		}
+
+		public Utility(String n, int l, int p, int u)
+			{
+				setName(n);
+				setLocation(l);
+				price = p;
+				numOfUtilities = u;
+			}
 
 		public int getRent(int diceRoll)
 			{
-				if(owned) {
-					return 10*diceRoll;
-				}else {
-					System.out.println();
-					return 0;
-				}
-				
+				if (owned)
+					{
+						return 10 * diceRoll;
+					}
+				else
+					{
+						System.out.println();
+						return 0;
+					}
+
 			}
 
 		public void setRent(int rent)
@@ -50,7 +52,4 @@ public class Utility extends BoardSpace
 				this.numOfUtilities = numOfUtilities;
 			}
 
-		
-		
-		
 	}
