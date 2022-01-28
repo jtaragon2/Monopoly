@@ -15,8 +15,7 @@ public class Player
 
 		public Player()
 			{
-				ownedProperties.add(39);
-				ownedProperties.add(32);
+				
 				balance = 1500;
 			}
 

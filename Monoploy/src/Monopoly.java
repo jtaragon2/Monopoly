@@ -137,13 +137,11 @@ public class Monopoly
 					{
 						System.out.println("Okay");
 					}
-				if(turnCounter ==0||turnCounter==1) {
-					p.setLocation(1);
-				}else {
+				
 				int b = rollDice();
 				System.out.println("You rolled a total of " + b + "!");
 				p.incrementLocation(b);
-				}
+				
 			}
 
 		public static void checkLocation(Player p)
