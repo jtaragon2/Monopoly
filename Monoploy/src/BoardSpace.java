@@ -53,7 +53,7 @@ public class BoardSpace
 				return 1;
 			}
 
-		public  void buyBoardSpace(Player p)
+		public void buyBoardSpace(Player p)
 			{
 
 				// ( (Property) Spaces.board.get(Monopoly.player1.getLocation())).getPrice()
@@ -66,8 +66,8 @@ public class BoardSpace
 				if (playerChoice == 1)
 					{
 						System.out.println("This Property's Cost Is: "
-								+ ((Property) Spaces.board.get(p.getLocation() - 1)).getPrice());
-						int price = ((Property) Spaces.board.get(p.getLocation() - 1)).getPrice();
+								+ ((Property) Spaces.board.get(p.getLocation() )).getPrice());
+						int price = ((Property) Spaces.board.get(p.getLocation() )).getPrice();
 						System.out.println("This Cost will now be subtracted from your balance");
 						p.subtractFromBalance(price);
 						System.out.println("Your balance is now: " + p.getBalance());
@@ -80,7 +80,7 @@ public class BoardSpace
 
 		public void payRent(Player P)
 			{
-				
+
 			}
 
 	}

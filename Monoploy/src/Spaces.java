@@ -50,6 +50,8 @@ public class Spaces
 				board.add(new Property("Park Place", 37, 350, 200, 35, 175, 500, 1100, 1300, 1500, 175, "Dark Blue"));
 				board.add(new BoardSpace("Luxury Tax", 38));
 				board.add(new Property("Boardwalk", 39, 400, 200, 50, 200, 600, 1400, 1700, 2000, 200, "Dark Blue"));
+				BoardSpace funTime = new Property("Boardwalk", 39, 400, 200, 50, 200, 600, 1400, 1700, 2000, 200, "Dark Blue");
+				board.add(funTime);
 			}
 		//new board
 		public static void fillSkiBoard()

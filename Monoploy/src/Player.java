@@ -15,6 +15,8 @@ public class Player
 
 		public Player()
 			{
+				ownedProperties.add(39);
+				ownedProperties.add(32);
 				balance = 1500;
 			}
 
@@ -148,7 +150,7 @@ public class Player
 					}
 				else if (ownedProperties.size() > 1)
 					{
-						Collections.sort(ownedProperties);
+						
 						System.out.println("You own " + ownedProperties.size() + " properties");
 						printProperties();
 					}
@@ -166,7 +168,7 @@ public class Player
 				for (Integer i : ownedProperties)
 					{
 						System.out.println();
-						System.out.println(Spaces.board.get(ownedProperties.get(i)).getName());
+						System.out.println(Spaces.board.get(i).getName());
 					}
 			}
 

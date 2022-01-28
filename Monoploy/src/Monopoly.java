@@ -21,6 +21,7 @@ public class Monopoly
 				player2.setName();
 				typeSetter();
 				pause();
+				
 				while (stillplaying)
 					{
 						if (turnCounter % 2 == 0)
@@ -136,9 +137,13 @@ public class Monopoly
 					{
 						System.out.println("Okay");
 					}
+				if(turnCounter ==0||turnCounter==1) {
+					p.setLocation(1);
+				}else {
 				int b = rollDice();
 				System.out.println("You rolled a total of " + b + "!");
 				p.incrementLocation(b);
+				}
 			}
 
 		public static void checkLocation(Player p)
@@ -158,7 +163,7 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(1).getName() + "!");
 							if (Spaces.board.get(1).isOwned() == false)
 								{
-									Spaces.board.get(p.getLocation()).buyBoardSpace(p);
+									((Property)Spaces.board.get(p.getLocation())).buyBoardSpace(p);
 								}
 
 							else
