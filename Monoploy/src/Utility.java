@@ -51,5 +51,5 @@ public class Utility extends BoardSpace
 			{
 				this.numOfUtilities = numOfUtilities;
 			}
-
+		
 	}

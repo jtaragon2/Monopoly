@@ -1,7 +1,5 @@
 import java.util.*;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-
 public class Monopoly
 	{
 		static boolean stillplaying = true;
@@ -12,6 +10,7 @@ public class Monopoly
 		private static String choice;
 		private static int turnCounter = 0;
 		private static int intChoice;
+		private static boolean menuBypass = false;
 
 		public static void main(String[] args)
 			{
@@ -21,7 +20,7 @@ public class Monopoly
 				player2.setName();
 				typeSetter();
 				pause();
-				
+
 				while (stillplaying)
 					{
 						if (turnCounter % 2 == 0)
@@ -40,13 +39,14 @@ public class Monopoly
 							}
 						else
 							{
-								System.out.print(player2.getName() + ", ");
+
 								if (player2.isJailStatus())
 									{
 										jail(player2);
 									}
 								else
 									{
+										System.out.print(player2.getName() + ", ");
 										movePlayer(player2);
 										checkLocation(player2);
 									}
@@ -54,8 +54,19 @@ public class Monopoly
 
 							}
 						turnCounter++;
+						System.out.println("------------------------------------------\n");
 					}
 
+			}
+
+		private static void featureTester(Player p)
+			{
+				System.out.println("This is the secret menu\nEnter 3 to go to free parking");
+				intChoice = intGetter.nextInt();
+				if (intChoice == 3)
+					{
+						p.setLocation(20);
+					}
 			}
 
 		private static void typeSetter()
@@ -133,15 +144,23 @@ public class Monopoly
 					{
 						p.printStats();
 					}
-				else
+				else if (intChoice == 2)
 					{
 						System.out.println("Okay");
 					}
-				
-				int b = rollDice();
-				System.out.println("You rolled a total of " + b + "!");
-				p.incrementLocation(b);
-				
+				else if (intChoice == 3)
+					{
+						featureTester(p);
+						menuBypass=true;
+					}
+				if (!menuBypass)
+					{
+						int b = rollDice();
+						System.out.println("You rolled a total of " + b + "!");
+						p.incrementLocation(b);
+					}else {
+						menuBypass=false;
+					}
 			}
 
 		public static void checkLocation(Player p)
@@ -161,12 +180,12 @@ public class Monopoly
 							System.out.println("You have landed at " + Spaces.board.get(1).getName() + "!");
 							if (Spaces.board.get(1).isOwned() == false)
 								{
-									((Property)Spaces.board.get(p.getLocation())).buyBoardSpace(p);
+									((Property) Spaces.board.get(p.getLocation())).buyBoardSpace(p);
 								}
 
 							else
 								{
-									((Property)(Spaces.board.get(1))).payRent(p);
+									((Property) (Spaces.board.get(1))).payRent(p);
 								}
 
 							break;
@@ -213,8 +232,8 @@ public class Monopoly
 									if (playerChoice == 1)
 										{
 											System.out.println("This Property's Cost Is: "
-													+ ((Railroad) Spaces.board.get(p.getLocation() - 1)).getPrice());
-											int price = ((Railroad) Spaces.board.get(p.getLocation() - 1)).getPrice();
+													+ ((Railroad) Spaces.board.get(p.getLocation())).getPrice());
+											int price = ((Railroad) Spaces.board.get(p.getLocation())).getPrice();
 											System.out.println("This Cost will now be subtracted from your balance");
 											p.subtractFromBalance(price);
 											System.out.println("Your balance is now: " + p.getBalance());
@@ -312,8 +331,8 @@ public class Monopoly
 									if (playerChoice == 1)
 										{
 											System.out.println("This Property's Cost Is: "
-													+ ((Utility) Spaces.board.get(p.getLocation() - 1)).getPrice());
-											int price = ((Utility) Spaces.board.get(p.getLocation() - 1)).getPrice();
+													+ ((Utility) Spaces.board.get(p.getLocation())).getPrice());
+											int price = ((Utility) Spaces.board.get(p.getLocation())).getPrice();
 											System.out.println("This Cost will now be subtracted from your balance");
 											p.subtractFromBalance(price);
 											System.out.println("Your balance is now: " + p.getBalance());
@@ -370,8 +389,8 @@ public class Monopoly
 									if (playerChoice == 1)
 										{
 											System.out.println("This Property's Cost Is: "
-													+ ((Railroad) Spaces.board.get(p.getLocation() - 1)).getPrice());
-											int price = ((Railroad) Spaces.board.get(p.getLocation() - 1)).getPrice();
+													+ ((Railroad) Spaces.board.get(p.getLocation())).getPrice());
+											int price = ((Railroad) Spaces.board.get(p.getLocation())).getPrice();
 											System.out.println("This Cost will now be subtracted from your balance");
 											p.subtractFromBalance(price);
 											System.out.println("Your balance is now: " + p.getBalance());
@@ -441,7 +460,7 @@ public class Monopoly
 
 							System.out.println("You have landed at Free Parking!");
 							System.out.println(
-									"You not go backwards. If you land on Free Parking again, you will start moving forward again. Have Fun!");
+									"You now go backwards. If you land on Free Parking again, you will start moving forward again. Have Fun!");
 							if (p.isBack())
 								{
 									p.setBack(false);
@@ -514,8 +533,8 @@ public class Monopoly
 									if (playerChoice == 1)
 										{
 											System.out.println("This Property's Cost Is: "
-													+ ((Railroad) Spaces.board.get(p.getLocation() - 1)).getPrice());
-											int price = ((Railroad) Spaces.board.get(p.getLocation() - 1)).getPrice();
+													+ ((Railroad) Spaces.board.get(p.getLocation())).getPrice());
+											int price = ((Railroad) Spaces.board.get(p.getLocation())).getPrice();
 											System.out.println("This Cost will now be subtracted from your balance");
 											p.subtractFromBalance(price);
 											System.out.println("Your balance is now: " + p.getBalance());
@@ -572,8 +591,8 @@ public class Monopoly
 									if (playerChoice == 1)
 										{
 											System.out.println("This Property's Cost Is: "
-													+ ((Utility) Spaces.board.get(p.getLocation() - 1)).getPrice());
-											int price = ((Utility) Spaces.board.get(p.getLocation() - 1)).getPrice();
+													+ ((Utility) Spaces.board.get(p.getLocation())).getPrice());
+											int price = ((Utility) Spaces.board.get(p.getLocation())).getPrice();
 											System.out.println("This Cost will now be subtracted from your balance");
 											p.subtractFromBalance(price);
 											System.out.println("Your balance is now: " + p.getBalance());
@@ -670,8 +689,8 @@ public class Monopoly
 									if (playerChoice == 1)
 										{
 											System.out.println("This Property's Cost Is: "
-													+ ((Railroad) Spaces.board.get(p.getLocation() - 1)).getPrice());
-											int price = ((Railroad) Spaces.board.get(p.getLocation() - 1)).getPrice();
+													+ ((Railroad) Spaces.board.get(p.getLocation())).getPrice());
+											int price = ((Railroad) Spaces.board.get(p.getLocation())).getPrice();
 											System.out.println("This Cost will now be subtracted from your balance");
 											p.subtractFromBalance(price);
 											System.out.println("Your balance is now: " + p.getBalance());

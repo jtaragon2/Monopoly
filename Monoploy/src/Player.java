@@ -15,7 +15,7 @@ public class Player
 
 		public Player()
 			{
-				
+
 				balance = 1500;
 			}
 
@@ -134,6 +134,12 @@ public class Player
 		public void printStats()
 			{
 				System.out.println("Your name is " + name);
+				System.out.println("Your location is "+location);
+				if(back) {
+					System.out.println("You are going backwards");
+				}else {
+					System.out.println("You are not going backwards");
+				}
 				System.out.println("Your balance is $" + balance);
 				if (jailStatus)
 					{
@@ -149,7 +155,7 @@ public class Player
 					}
 				else if (ownedProperties.size() > 1)
 					{
-						
+
 						System.out.println("You own " + ownedProperties.size() + " properties");
 						printProperties();
 					}
@@ -163,7 +169,7 @@ public class Player
 
 		public void printProperties()
 			{
-				System.out.println();
+				
 				for (Integer i : ownedProperties)
 					{
 						System.out.println();
@@ -180,5 +186,5 @@ public class Player
 			{
 				this.back = back;
 			}
-		
+
 	}
